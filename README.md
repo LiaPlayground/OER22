@@ -12,8 +12,9 @@ narrator: US English Female
 comment:  LiaScript presentation on OER and sustainability at the OER22
           conference in London.
 
--->
+import: https://raw.githubusercontent.com/liaTemplates/AVR8js/main/README.md
 
+-->
 
 
 
@@ -50,11 +51,11 @@ comment:  LiaScript presentation on OER and sustainability at the OER22
 # Open-courSe web development with LiaScript Markdown
 
 
+https://github.com/LiaPlayground/OER22
 
+[qr-code](https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaPlayground/OER22/main/README.md)
 
-
-
-
+https://liascript.github.io/course/?https://raw.githubusercontent.com/LiaPlayground/OER22/main/README.md
 
 
 
@@ -115,7 +116,7 @@ comment:  LiaScript presentation on OER and sustainability at the OER22
 
 Images:
 
-[images](https://farm2.static.flickr.com/1618/26701766821_7bea494826.jpg)
+![images](https://farm2.static.flickr.com/1618/26701766821_7bea494826.jpg)
 
 
 
@@ -199,17 +200,12 @@ Images:
 
 ### Multimedia
 
-[Photo of Jupiter](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png/1280px-Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png)
-
-[hear a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
-
-[Fun with Tables](https://www.youtube.com/watch?v=Y_7q9T5jYHo)
-
-[VTK VolumeContour](https://kitware.github.io/vtk-js/examples/VolumeContour/index.html)
-
-[Circuit simulation](https://www.falstad.com/circuit/circuitjs.html?startCircuit=majority.txt)
-
-[Bust of Nefertiti](https://sketchfab.com/3d-models/bust-of-nefertiti-foia-results-8c60faca6152405e9d35784efa8b9aa1)
+![Photo of Jupiter](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png/1280px-Latest_NASA_photo_of_Jupiter_taken_this_Sunday_by_the_Juno_probe.png)
+?[hear a horse](https://www.w3schools.com/html/horse.mp3 "hear a horse")
+!?[Fun with Tables](https://www.youtube.com/watch?v=Y_7q9T5jYHo)
+??[VTK VolumeContour](https://kitware.github.io/vtk-js/examples/VolumeContour/index.html)
+??[Circuit simulation](https://www.falstad.com/circuit/circuitjs.html?startCircuit=majority.txt)
+??[Bust of Nefertiti](https://sketchfab.com/3d-models/bust-of-nefertiti-foia-results-8c60faca6152405e9d35784efa8b9aa1)
 
 
 
@@ -299,12 +295,26 @@ Type "voice" to see a list of all available languages.
 
 ### Quizzes
 
+alsjfdaslkf
 
+[[X]] ja
+[[ ]] no
+[[ ]] adfasf
 
+[( )] asdfsa
+[(X)] asfsd
+[[?]] hint 1
+[[?]] hint 2
+********************************
 
+afdasda
 
+$$
+   \sum_{i=1}^\infty\frac{1}{n^2}
+        =\frac{\pi^2}{6}
+$$
 
-
+********************************
 
 
 
@@ -401,6 +411,61 @@ Type "voice" to see a list of all available languages.
 
 
 
+#### Tables
+
+
+| Animal          | weight in kg | Lifespan years | Mitogen |
+| --------------- | ------------:| --------------:| -------:|
+| Mouse           |        0.028 |              2 |      95 |
+| Flying squirrel |        0.085 |             15 |      50 |
+| Brown bat       |        0.020 |             30 |      10 |
+| Sheep           |           90 |             12 |      95 |
+| Human           |           68 |             70 |      10 |
+
+
+#### Diagrams
+
+
+                                Multiline
+1.9 |
+    |                 ***                  (* main curve)
+  y |               *     *
+  - | r r r r r r r*r r r r*r r r r r r r
+  a |             *         *
+  x |            *           *
+  i | B B B B B * B B B B B B * B B B B B
+  s |         *                 *
+    | *  * *                       * *  *
+ -1 +------------------------------------
+    0              x-axis               1
+
+
+#### ASCII-Art
+
+
+
+```` ascii
+   ____[]
+  | ___ |
+  ||   ||  device
+  ||___||  loads
+  | ooo |----------------------------------------------------------.
+  | ooo |    |                          |                          |
+  | ooo |    |                          |                          |
+  '_____'    |                          |                          |
+             |                          |                          |
+             v                          v                          v
+   .-------------------.  .---------------------------.  .-------------------.
+   | Loadable module C |  |     Loadable module A     |  | Loadable module B |
+   '-------------------'  |---------------------------|  |   (instrumented)  |
+             |            |         .-----.           |  '-------------------'
+             '------------+-------->| A.o |           |             |
+                 calls    |         '-----'           |             |
+                          |    .------------------.   |             |
+                          |   / A.instrumented.o /<---+-------------'
+                          |  '------------------'     |    calls
+                          '---------------------------'
+````
 
 
 
@@ -408,11 +473,102 @@ Type "voice" to see a list of all available languages.
 
 
 
+#### Interacitivity
 
 
+The first value defines some kind of range:
+<script input="range" value="2" output="range">@input</script>
+, while the second can be interpreted as range
+<script input="range" value="50" output="amplitude">@input</script>.
+You can double-click on any gray element to inspect and edit its javascript code.
 
 
+<script run-once style="display: inline-block; width: 100%">
+function func(x) {
+    x /= 10;
+    return Math.sin(x) * Math.cos(x * @input(`range`) + 1) * Math.sin(x * 3 + 2) * @input(`amplitude`);
+}
 
+function generateData() {
+    let data = [];
+    for (let i = -200; i <= 200; i += 0.1) {
+        data.push([i, func(i)]);
+    }
+    return data;
+}
+
+let option = {
+    animation: false,
+    grid: {
+        top: 40,
+        left: 50,
+        right: 40,
+        bottom: 50
+    },
+    xAxis: {
+        name: 'x',
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    yAxis: {
+        name: 'y',
+        min: -100,
+        max: 100,
+        minorTick: {
+            show: true
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#999'
+            }
+        },
+        minorSplitLine: {
+            show: true,
+            lineStyle: {
+                color: '#ddd'
+            }
+        }
+    },
+    dataZoom: [{
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        xAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }, {
+        show: true,
+        type: 'inside',
+        filterMode: 'none',
+        yAxisIndex: [0],
+        startValue: -20,
+        endValue: 20
+    }],
+    series: [
+        {
+            type: 'line',
+            showSymbol: false,
+            clip: true,
+            data: generateData()
+        }
+    ]
+}
+
+"HTML: <lia-chart option='" + JSON.stringify(option) + "'></lia-chart>"
+
+</script>
 
 
 
@@ -451,8 +607,15 @@ Type "voice" to see a list of all available languages.
 
 https://github.com/topics/liascript-template
 
-``` cpp
+<div id="example">
+<wokwi-led color="red"   pin="13" label="13"></wokwi-led>
+<wokwi-led color="green" pin="12" label="12"></wokwi-led>
+<wokwi-led color="blue"  pin="11" label="11"></wokwi-led>
+<wokwi-led color="blue"  pin="10" label="10"></wokwi-led>
+<span id="simulation-time"></span>
+</div>
 
+``` cpp
 byte leds[] = {13, 12, 11, 10};
 void setup() {
   Serial.begin(115200);
@@ -471,6 +634,8 @@ void loop() {
   i = (i + 1) % sizeof(leds);
 }
 ```
+@AVR8js.sketch(example)
+
 
 
 
@@ -561,14 +726,14 @@ void loop() {
 * __YouTube:__ https://www.youtube.com/channel/UCyiTe2GkW_u05HSdvUblGYg
 * __Additional resources:__
 
-- Documentation: https://github.com/LiaScript/docs
-- Courses: https://github.com/topics/liascript-course
-- Templates: https://github.com/topics/liascript-template
-- Blog: https://aizac.herokuapp.com
+  - Documentation: https://github.com/LiaScript/docs
+  - Courses: https://github.com/topics/liascript-course
+  - Templates: https://github.com/topics/liascript-template
+  - Blog: https://aizac.herokuapp.com
 
 * __Editor:__ https://atom.io
 
-- Liascript-Preview: https://atom.io/packages/liascript-preview
-- Liascript-Snippets: https://atom.io/packages/liascript-snippets
+  - Liascript-Preview: https://atom.io/packages/liascript-preview
+  - Liascript-Snippets: https://atom.io/packages/liascript-snippets
 
 * __Development-Server:__ https://www.npmjs.com/package/@liascript/devserver

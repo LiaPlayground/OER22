@@ -3,7 +3,7 @@ author:   André Dietrich, Sebastian Zug, Mark Jacob
 
 email:    LiaScript@web.de
 
-version:  0.0.1
+version:  1.0.0
 
 language: en
 
